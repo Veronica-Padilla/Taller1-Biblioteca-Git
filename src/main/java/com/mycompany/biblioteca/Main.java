@@ -31,7 +31,7 @@ public class Main {
     }
 
     public static void listarClientes() {
-        System.out.print("     LISTAR CLIENTES");
+        System.out.print("       LISTAR CLIENTES");
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados.");
         } else {
@@ -50,5 +50,27 @@ public class Main {
         }
         return null;
     }
+
+    public static void actualizarCliente(String id) {
+        Cliente c = buscarCliente(id);
+        if (c == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+        System.out.println("       ACTUALIZAR CLIENTE");
+        System.out.print("Nuevo nombre (" + c.getNombre() + "): ");
+        String nombre = sc.nextLine();
+        System.out.print("Nuevo teléfono (" + c.getTelefono());
+        String telefono = sc.nextLine();
+        System.out.print("Nuevo email (" + c.getEmail() + "):" );
+        String email = sc.nextLine();
+
+        c.setNombre(nombre);
+        c.setTelefono(telefono);
+        c.setEmail(email);
+        System.out.println("Cliente actualizado exitosamente.");
+    }
+
+
 
 }
