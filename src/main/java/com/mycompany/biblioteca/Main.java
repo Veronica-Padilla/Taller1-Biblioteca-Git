@@ -39,6 +39,16 @@ public class Main {
             }
         }
 
+        public static Cliente buscarCliente(String id) {
+            for (Cliente c : clientes) {
+                if (c.getId().equals(id)) {
+                    //.equals compara a los String
+                    return c;
+                }
+            }
+            return null;
+        }
+
     }
 
 
