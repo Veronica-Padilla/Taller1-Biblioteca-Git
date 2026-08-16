@@ -71,6 +71,14 @@ public class Main {
         System.out.println("Cliente actualizado exitosamente.");
     }
 
-
+    public static void eliminarCliente(String id) {
+        Cliente c = buscarCliente(id);
+        if (c == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+        clientes.remove(c);
+        System.out.println("Cliente eliminado exitosamente");
+    }
 
 }
