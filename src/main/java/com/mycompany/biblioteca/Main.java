@@ -27,6 +27,18 @@ public class Main {
         Cliente nuevoCliente = new Cliente(id, nombre, telefono, email);
         clientes.add(nuevoCliente);
         System.out.println("Cliente creado exitosamente.");
+
+        public static void listarClientes() {
+            System.out.print("     LISTAR CLIENTES");
+            if (clientes.isEmpty()) {
+                System.out.println("No hay clientes registrados.");
+            } else {
+                for (Cliente c : clientes) {
+                    System.out.println(c);
+                }
+            }
+        }
+
     }
 
 
