@@ -28,29 +28,27 @@ public class Main {
         clientes.add(nuevoCliente);
         System.out.println("Cliente creado exitosamente.");
 
-        public static void listarClientes() {
-            System.out.print("     LISTAR CLIENTES");
-            if (clientes.isEmpty()) {
-                System.out.println("No hay clientes registrados.");
-            } else {
-                for (Cliente c : clientes) {
-                    System.out.println(c);
-                }
-            }
-        }
-
-        public static Cliente buscarCliente(String id) {
-            for (Cliente c : clientes) {
-                if (c.getId().equals(id)) {
-                    //.equals compara a los String
-                    return c;
-                }
-            }
-            return null;
-        }
-
     }
 
+    public static void listarClientes() {
+        System.out.print("     LISTAR CLIENTES");
+        if (clientes.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+        } else {
+            for (Cliente c : clientes) {
+                System.out.println(c);
+            }
+        }
+    }
 
+    public static Cliente buscarCliente(String id) {
+        for (Cliente c : clientes) {
+            if (c.getId().equals(id)) {
+                //.equals compara a los String
+                return c;
+            }
+        }
+        return null;
+    }
 
 }
