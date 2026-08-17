@@ -110,6 +110,26 @@ public class Main {
         System.out.println("Cliente actualizado exitosamente.");
     }
 
+    public static void actualizarLibro(String codigo) {
+        Libro l = buscarLibro(codigo);
+        if (l == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+        System.out.println("--- Actualizar Libro ---");
+        System.out.print("Nuevo título (" + 1.getTitulo() + "): ");
+        String titulo = sc.nextLine();
+        System.out.print("Nuevo año de publicación (" + 1.getAnioPublicacion() + "): ");
+        int anio = Integer.parseInt(sc.nextLine());
+        System.out.print("Nuevo autor (" + 1.getAutor() + "): ");
+        String autor = sc.nextLine();
+
+        1.setTitulo(titulo);
+        1.setAnioPublicacion(anio);
+        1.setAutor(autor);
+        System.out.println("Libro actualizado exitosamente.");
+    }
+
     public static void eliminarCliente(String id) {
         Cliente c = buscarCliente(id);
         if (c == null) {
