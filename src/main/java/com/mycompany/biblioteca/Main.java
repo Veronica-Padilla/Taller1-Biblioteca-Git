@@ -1,12 +1,14 @@
 package com.mycompany.biblioteca;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
 
     static ArrayList<Cliente> clientes = new ArrayList<>();
     static ArrayList<Libro> libros = new ArrayList<>();
+    static ArrayList<Prestamo> prestamos = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -47,6 +49,37 @@ public class Main {
         libros.add(nuevoLibro);
         System.out.println("Libro creado exitosamente.");
 
+    }
+
+    public static void crearPrestamo() {
+        System.out.println("--- Registrar Préstamo ---");
+        System.out.print("ID del préstamo: ");
+        String idPrestamo = sc.nextLine();
+        System.out.print("ID del cliente: ");
+        String idCliente = sc.nextLine();
+        System.out.print("Código del libro: ");
+        String codigoLibro = sc.nextLine();
+
+        Cliente cliente = buscarCliente(idCliente);
+        Libro libro = buscarLibro(codigoLibro);
+
+        if (cliente == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+        if (libro == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+        if (!libro.isDisponible()) {
+            System.out.println("El libro no está disponible actualmente.");
+            return;
+        }
+
+        Prestamo nuevoPrestamo = new Prestamo(idPrestamo, cliente, libro, LocalDate.now(), "ACTIVO");
+        prestamos.add(nuevoPrestamo);
+        libro.setDisponible(false);
+        System.out.println("Préstamo registrado exitosamente.");
     }
 
     public static void listarClientes() {
