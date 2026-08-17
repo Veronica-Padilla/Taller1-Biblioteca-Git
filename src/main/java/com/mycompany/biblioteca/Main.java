@@ -12,7 +12,55 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // fase 8
+        int opcion;
+        do {
+            System.out.println("\n===== SISTEMA DE GESTIÓN DE BIBLIOTECA =====");
+            System.out.println("1. Crear cliente");
+            System.out.println("2. Listar clientes");
+            System.out.println("3. Actualizar cliente");
+            System.out.println("4. Eliminar cliente");
+            System.out.println("5. Crear libro");
+            System.out.println("6. Listar libros");
+            System.out.println("7. Actualizar libro");
+            System.out.println("8. Eliminar libro");
+            System.out.println("9. Registrar préstamo");
+            System.out.println("10. Registrar devolución");
+            System.out.println("11. Listar préstamos");
+            System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = Integer.parseInt(sc.nextLine());
+
+            switch (opcion) {
+                case 1 -> crearCliente();
+                case 2 -> listarClientes();
+                case 3 -> {
+                    System.out.print("ID del cliente a actualizar: ");
+                    actualizarCliente(sc.nextLine());
+                }
+                case 4 -> {
+                    System.out.print("ID del cliente a eliminar: ");
+                    eliminarCliente(sc.nextLine());
+                }
+                case 5 -> crearLibro();
+                case 6 -> listarLibros();
+                case 7 -> {
+                    System.out.print("Código del libro a actualizar: ");
+                    actualizarLibro(sc.nextLine());
+                }
+                case 8 -> {
+                    System.out.print("Código del libro a eliminar: ");
+                    eliminarLibro(sc.nextLine());
+                }
+                case 9 -> crearPrestamo();
+                case l0 -> {
+                    System.out.print("ID del préstamo a devolver: ");
+                    devolverPrestamo(sc.nextLine());
+                }
+                case ll -> listarPrestamos();
+                case 0 -> System.out.println("Saliendo del sistema...");
+                default -> System.out.println("Opción no válida.");
+            }
+        } while (opcion != 0);
     }
 
     public static void crearCliente() {
@@ -98,8 +146,8 @@ public class Main {
         if (libros.isEmpty()) {
             System.out.println("No hay libros registrados.");
         } else {
-            for (Libro 1 : libros) {
-                System.out.println(1);
+            for (Libro l : libros) {
+                System.out.println(l);
             }
         }
     }
@@ -126,9 +174,9 @@ public class Main {
     }
 
     public static Libro buscarLibro(String codigo) {
-        for (Libro 1 : libros) {
-            if (1.getCodigo().equals(codigo)) {
-                return 1;
+        for (Libro l : libros) {
+            if (l.getCodigo().equals(codigo)) {
+                return l;
             }
         }
         return null;
@@ -143,7 +191,7 @@ public class Main {
         System.out.println("       ACTUALIZAR CLIENTE");
         System.out.print("Nuevo nombre (" + c.getNombre() + "): ");
         String nombre = sc.nextLine();
-        System.out.print("Nuevo teléfono (" + c.getTelefono());
+        System.out.print("Nuevo teléfono (" + c.getTelefono() + ")";
         String telefono = sc.nextLine();
         System.out.print("Nuevo email (" + c.getEmail() + "):" );
         String email = sc.nextLine();
@@ -161,16 +209,16 @@ public class Main {
             return;
         }
         System.out.println("--- Actualizar Libro ---");
-        System.out.print("Nuevo título (" + 1.getTitulo() + "): ");
+        System.out.print("Nuevo título (" + l.getTitulo() + "): ");
         String titulo = sc.nextLine();
-        System.out.print("Nuevo año de publicación (" + 1.getAnioPublicacion() + "): ");
+        System.out.print("Nuevo año de publicación (" + l.getAnioPublicacion() + "): ");
         int anio = Integer.parseInt(sc.nextLine());
-        System.out.print("Nuevo autor (" + 1.getAutor() + "): ");
+        System.out.print("Nuevo autor (" + l.getAutor() + "): ");
         String autor = sc.nextLine();
 
-        1.setTitulo(titulo);
-        1.setAnioPublicacion(anio);
-        1.setAutor(autor);
+        l.setTitulo(titulo);
+        l.setAnioPublicacion(anio);
+        l.setAutor(autor);
         System.out.println("Libro actualizado exitosamente.");
     }
 
@@ -185,12 +233,12 @@ public class Main {
     }
 
     public static void eliminarLibro(String codigo) {
-        Libro 1 = buscarLibro(codigo);
-        if (1 == null) {
+        Libro l = buscarLibro(codigo);
+        if (l == null) {
             System.out.println("Libro no encontrado.");
             return;
         }
-        libros.remove(1);
+        libros.remove(l);
         System.out.println("Libro eliminado exitosamente.");
     }
 
