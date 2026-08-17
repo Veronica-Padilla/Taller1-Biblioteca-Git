@@ -183,4 +183,20 @@ public class Main {
         System.out.println("Libro eliminado exitosamente.");
     }
 
+    public static void devolverPrestamo(String idPrestamo) {
+        for (Prestamo p : prestamos) {
+            if (p.getIdPrestamo().equals(idPrestamo)) {
+                if (p.getEstado().equals("DEVUELTO")) {
+                    System.out.println("Este préstamo ya fue devuelto.");
+                    return;
+                }
+                p.setEstado("DEVUELTO");
+                p.getLibro().setDisponible(true);
+                System.out.println("Devolución registrada exitosamente.");
+                return;
+            }
+        }
+        System.out.println("Préstamo no encontrado.");
+    }
+
 }
