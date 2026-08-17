@@ -52,7 +52,7 @@ public class Main {
     }
 
     public static void crearPrestamo() {
-        System.out.println("--- Registrar Préstamo ---");
+        System.out.println("       REGISTRAR PRÉSTAMO");
         System.out.print("ID del préstamo: ");
         String idPrestamo = sc.nextLine();
         System.out.print("ID del cliente: ");
@@ -100,6 +100,17 @@ public class Main {
         } else {
             for (Libro 1 : libros) {
                 System.out.println(1);
+            }
+        }
+    }
+
+    public static void listarPrestamos() {
+        System.out.println("       LISTA DE PRÉSTAMOS");
+        if (prestamos.isEmpty()) {
+            System.out.println("No hay préstamos registrados.");
+        } else {
+            for (Prestamo p : prestamos) {
+                System.out.println(p);
             }
         }
     }
