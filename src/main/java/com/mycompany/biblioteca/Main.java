@@ -1,12 +1,14 @@
 package com.mycompany.biblioteca;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
 
     static ArrayList<Cliente> clientes = new ArrayList<>();
     static ArrayList<Libro> libros = new ArrayList<>();
+    static ArrayList<Prestamo> prestamos = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -49,6 +51,37 @@ public class Main {
 
     }
 
+    public static void crearPrestamo() {
+        System.out.println("       REGISTRAR PRÉSTAMO");
+        System.out.print("ID del préstamo: ");
+        String idPrestamo = sc.nextLine();
+        System.out.print("ID del cliente: ");
+        String idCliente = sc.nextLine();
+        System.out.print("Código del libro: ");
+        String codigoLibro = sc.nextLine();
+
+        Cliente cliente = buscarCliente(idCliente);
+        Libro libro = buscarLibro(codigoLibro);
+
+        if (cliente == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+        if (libro == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+        if (!libro.isDisponible()) {
+            System.out.println("El libro no está disponible actualmente.");
+            return;
+        }
+
+        Prestamo nuevoPrestamo = new Prestamo(idPrestamo, cliente, libro, LocalDate.now(), "ACTIVO");
+        prestamos.add(nuevoPrestamo);
+        libro.setDisponible(false);
+        System.out.println("Préstamo registrado exitosamente.");
+    }
+
     public static void listarClientes() {
         System.out.print("       LISTAR CLIENTES");
         if (clientes.isEmpty()) {
@@ -67,6 +100,17 @@ public class Main {
         } else {
             for (Libro 1 : libros) {
                 System.out.println(1);
+            }
+        }
+    }
+
+    public static void listarPrestamos() {
+        System.out.println("       LISTA DE PRÉSTAMOS");
+        if (prestamos.isEmpty()) {
+            System.out.println("No hay préstamos registrados.");
+        } else {
+            for (Prestamo p : prestamos) {
+                System.out.println(p);
             }
         }
     }
@@ -148,6 +192,22 @@ public class Main {
         }
         libros.remove(1);
         System.out.println("Libro eliminado exitosamente.");
+    }
+
+    public static void devolverPrestamo(String idPrestamo) {
+        for (Prestamo p : prestamos) {
+            if (p.getIdPrestamo().equals(idPrestamo)) {
+                if (p.getEstado().equals("DEVUELTO")) {
+                    System.out.println("Este préstamo ya fue devuelto.");
+                    return;
+                }
+                p.setEstado("DEVUELTO");
+                p.getLibro().setDisponible(true);
+                System.out.println("Devolución registrada exitosamente.");
+                return;
+            }
+        }
+        System.out.println("Préstamo no encontrado.");
     }
 
 }
