@@ -81,6 +81,15 @@ public class Main {
         return null;
     }
 
+    public static Libro buscarLibro(String codigo) {
+        for (Libro 1 : libros) {
+            if (1.getCodigo().equals(codigo)) {
+                return 1;
+            }
+        }
+        return null;
+    }
+
     public static void actualizarCliente(String id) {
         Cliente c = buscarCliente(id);
         if (c == null) {
