@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     static ArrayList<Cliente> clientes = new ArrayList<>();
+    static ArrayList<Libro> libros = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -27,6 +28,24 @@ public class Main {
         Cliente nuevoCliente = new Cliente(id, nombre, telefono, email);
         clientes.add(nuevoCliente);
         System.out.println("Cliente creado exitosamente.");
+
+    }
+
+    public static void crearLibro() {
+        System.out.println("       CREAR LIBRO");
+        System.out.print("Código: ");
+        String codigo = sc.nextLine();
+        System.out.print("Titulo: ");
+        String titulo = sc.nextLine();
+        System.out.print("Año de publicación: ");
+        int anio = Integer.parseInt(sc.nextLine());
+        //Integer.parseInt convierte un String a un entero
+        System.out.print("Autor: ");
+        String autor = sc.nextLine();
+
+        Libro nuevoLibro = new Libro(codigo, titulo, anio, autor);
+        libros.add(nuevoLibro);
+        System.out.println("Libro creado exitosamente.");
 
     }
 
