@@ -60,6 +60,17 @@ public class Main {
         }
     }
 
+    public static void listarLibros() {
+        System.out.println("       LISTAR LIBROS");
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+        } else {
+            for (Libro 1 : libros) {
+                System.out.println(1);
+            }
+        }
+    }
+
     public static Cliente buscarCliente(String id) {
         for (Cliente c : clientes) {
             if (c.getId().equals(id)) {
