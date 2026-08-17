@@ -140,4 +140,14 @@ public class Main {
         System.out.println("Cliente eliminado exitosamente");
     }
 
+    public static void eliminarLibro(String codigo) {
+        Libro 1 = buscarLibro(codigo);
+        if (1 == null) {
+            System.out.println("Libro no encontrado.");
+            return;
+        }
+        libros.remove(1);
+        System.out.println("Libro eliminado exitosamente.");
+    }
+
 }
